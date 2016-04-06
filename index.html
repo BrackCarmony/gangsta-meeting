@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html ng-app="quickAngular">
+  <head>
+    <meta charset="utf-8">
+    <title>Quick Angular Application </title>
+  </head>
+  <body ng-controller = "mainCtrl">
+    <input type = "text" ng-model="filterByMe.name" placeholder="Filter by Name">
+    <input type = "text" ng-model="filterByMe.city" placeholder="Filter by City">
+  </br>
+    <input type = "text" ng-model="newFriend.name" placeholder="New Friend Name">
+    <input type = "text" ng-model="newFriend.city" placeholder="New Friend City">
+    <button ng-click = "addFriend(newFriend)">Add Friend</button>
+
+    <button ng-click = "removeRandomFriend()">Russian Roulette</button>
+
+    <div ng-repeat="friend in friends | filter:filterByMe">
+      <div ng-mouseenter="showFrenemy=true" ng-mouseleave="showFrenemy=false">
+        Our Friend {{friend.name}}. <span ng-show = "friend.city">From the amazing location of {{friend.city}}</span> </br>
+        <span ng-click="removeFriend(friend.name)" ng-show ="showFrenemy"> Make Frenemy</span>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.3/angular.js" charset="utf-8"></script>
+    <script src="js/app.js"></script>
+    <script src="js/mainCtrl.js"></script>
+    <script src="js/mainSrvc.js"></script>
+  </body>
+</html>
